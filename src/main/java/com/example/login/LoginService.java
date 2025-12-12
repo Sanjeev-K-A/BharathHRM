@@ -17,4 +17,8 @@ public class LoginService {
         return loginRepository.findByUsernameAndPassword(username, password);
     }
 
+    public String generateToken(String username) {
+    return "token_" + username + "_" + System.currentTimeMillis();
+}
+
 }
