@@ -11,7 +11,12 @@ import java.time.LocalDateTime;
 @Table(
         name = "notification_preferences",
         uniqueConstraints = @UniqueConstraint(
-                columnNames = {"user_id", "organization_id", "notification_type", "channel"}
+                columnNames = {
+                        "organization_id",
+                        "user_id",
+                        "notification_type",
+                        "channel"
+                }
         )
 )
 @Getter
@@ -33,15 +38,15 @@ public class NotificationPreference {
     private Long organizationId;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "notification_type", nullable = false)
+    @Column(nullable = false)
     private NotificationType notificationType;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "channel", nullable = false)
+    @Column(nullable = false)
     private NotificationChannel channel;
 
     @Column(name = "is_enabled", nullable = false)
-    private boolean enabled;
+    private boolean enabled = true;
 
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
